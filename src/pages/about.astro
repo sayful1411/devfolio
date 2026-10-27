@@ -1,4 +1,36 @@
 --- 
+import '../styles/global.css';
+
+const pageTitle = "About - Md. Sayful Islam";
+
+const identity = {
+  name: "Md. Sayful Islam",
+  role: "Developer",
+  bio: "I am a developer learning Astro. I am passionate about building fast, modern websites.",
+};
+
+const skills = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Node.js",
+  "HTML",
+  "CSS",
+  "Astro",
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const operatingSystem = "MacOS";
+const quantity = 3;
+const footwear = "boots";
+const student = false;
+
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -8,13 +40,49 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>About - My Astro Site</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/blog">Blog</a>
 
-		<h1>About My Astro Site</h1>
+		<h1>{pageTitle}</h1>
+		<p>I am a developer learning Astro. I am passionate about building fast, modern websites.</p>
+
+		<p>Here are a few facts about me:</p>
+		<ul>
+			<li>My name is {identity.name}.</li>
+			<li>I am a {identity.role}.</li>
+			<li>{identity.bio}</li>
+		</ul>
+		<p>My skills are:</p>
+		<ul>
+		{skills.map((skill) => <li class="skill">{skill}</li>)}
+		</ul>
+
+		{happy && <p>I am happy to be learning Astro!</p>}
+
+		{finished && <p>I finished this tutorial!</p>}
+
+		{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+
+		<p>{operatingSystem}</p>
+		{student && <p>I am still in school.</p>}
+		<p>I have {quantity + 8} pairs of {footwear}</p>
+		{operatingSystem === "MacOS" ? <p>I am using a Mac.</p> : <p>I am not using a Mac.</p>}
+
 	</body>
 </html>
+
+<style define:vars={{skillColor, fontWeight, textCase}}>
+	h1 {
+		color: purple;
+		font-size: 4rem;
+	}
+	.skill {
+    	color: var(--skillColor);
+    	font-weight: var(--fontWeight);
+    	text-transform: var(--textCase);
+  }
+</style>

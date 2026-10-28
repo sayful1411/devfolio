@@ -1,8 +1,5 @@
---- 
-import '../styles/global.css';
-import Menu from '../components/Menu.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "About - Md. Sayful Islam";
 
@@ -36,20 +33,8 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<Menu />
-		<Navigation />
-
-		<h1>{pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
+	<h2>About Me</h2>
 		<p>I am a developer learning Astro. I am passionate about building fast, modern websites.</p>
 
 		<p>Here are a few facts about me:</p>
@@ -73,13 +58,10 @@ const textCase = "uppercase";
 		{student && <p>I am still in school.</p>}
 		<p>I have {quantity + 8} pairs of {footwear}</p>
 		{operatingSystem === "MacOS" ? <p>I am using a Mac.</p> : <p>I am not using a Mac.</p>}
-
-		<Footer />
-	</body>
-</html>
+</BaseLayout>
 
 <style define:vars={{skillColor, fontWeight, textCase}}>
-	h1 {
+	h2 {
 		color: purple;
 		font-size: 4rem;
 	}
@@ -89,7 +71,3 @@ const textCase = "uppercase";
     	text-transform: var(--textCase);
   }
 </style>
-
-<script>
-    import '../scripts/menu.js';
-</script>
